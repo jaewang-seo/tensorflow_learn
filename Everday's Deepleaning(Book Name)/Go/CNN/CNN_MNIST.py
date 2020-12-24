@@ -14,8 +14,14 @@ np.random.seed(seed)
 tf.random.set_seed(3)
 
 (X_train, Y_train), (X_test, Y_test) = mnist.load_data()
+
+print(X_train, Y_train)
+print("OK")
 X_train = X_train.reshape(X_train.shape[0], 28, 28, 1).astype('float64') / 255
+# X_train = X_train.reshape(X_train.shape[0], 784).astype('float64') /255
 X_test = X_test.reshape(X_test.shape[0], 28, 28, 1).astype('float64') / 255
+# X_test = X_test.reshape(X_test.shape[0], 784).astype('float64') / 255
+
 Y_train = np_utils.to_categorical(Y_train)
 Y_test = np_utils.to_categorical(Y_test)
 
@@ -32,7 +38,7 @@ model.add(Dense(10, activation='softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-MODLE_DIR = './CNN_MNIST_MODEL/'
+MODLE_DIR = "Everday's Deepleaning(Book Name)/Go/CNN/CNN_MNIST_MODEL/"
 if not os.path.exists(MODLE_DIR):
     os.mkdir(MODLE_DIR)
 
